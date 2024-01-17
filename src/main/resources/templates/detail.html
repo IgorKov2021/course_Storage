@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="${good.name}"></p>
+
+<form th:action="@{/action(id = ${good.id})}" method="post">
+    <input type="text" name="name" th:field="${good.name}">
+    <input type="text" name="certificatePresent" th:value="${good.certificatePresent}">
+    <input type="submit" name="action" value="update">
+    <input type="submit" name="action" value="delete" >
+</form>
+</body>
+</html>

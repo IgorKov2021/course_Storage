@@ -1,0 +1,40 @@
+td {
+    text-align: center;
+    vertical-align: center;
+
+
+}
+.success {
+    color: #08c208;
+}
+
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+body {
+    background-color: #373b3e;
+}
+.number {
+    margin-top: 20px;
+}
+
+form.f1 {
+    margin-bottom: 20px;
+
+}
+.error {
+    color: red;
+    font-size: 30px;
+
+}
+div.error {
+    display: block;
+    align-items: center;
+}
+p {
+    font-size: xx-large;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<form action="/add/good"  method="post" th:object="${good}" >
+
+   name <input type="text" th:field="*{name}" >
+    <p th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}" ></p>
+  Company <input type="text" th:field="*{company.companyName}" th:value="company" >
+
+    <input type="submit" value="Save">
+    <div th:if = "${success ne null}">
+        <p th:text = "${success}"> </p> </div>
+
+</form>
+<form th:action="@{/list2(name = ${name})}" method="post" >
+Company name:    <select th:selected="${name}" class="form-control" id="dropDownList">
+        <option value="0">select option</option>
+        <option th:each="option : ${allCompanies}" th:value="${option.companyName}" th:text="${option.companyName}"></option>
+    </select>
+</form>-->
+<form action="/add/good"  method="post" th:object="${goodNew}" >
+   <!-- "@{/add/good(comp = (${company}))}"-->
+    name <input type="text" th:field="*{name}" >
+    <p th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}" ></p>
+   Select company name:  <select  th:field="*{company}" class="form-control" id="dropDownList">
+        <div th:if = "${success == null}"> <option value="0">select option</option></div>
+        <option th:each="option : ${allCompanies}" th:value="${option.uuid}" th:text="${option.companyName}"></option>
+    </select>
+    <input type="submit" value="Save">
+</form>
+
+    <div th:if = "${success ne null}">
+        <p th:text = "${success}"> </p> </div>
+
+
+</body>
+</html>

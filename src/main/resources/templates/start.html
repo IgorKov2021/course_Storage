@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+<body>
+
+<div class="container-fluid p-3 text-bg-dark">
+
+    <header class="p-3 text-bg-dark">
+
+        <div th:if="${auth}"
+             class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <div class="logo">
+                <img src="../static/images/storage.png" alt="" width="350" height="100">
+            </div>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+
+                <li><h5><a href="#" class="nav-link px-6 text-secondary ">Home</a></h5></li>
+                <li><h5><a href="/storage" class="nav-link px-6 text-white">Storage</a></h5></li>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <h5>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Add ... </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="/add/company">Add company</a></li>
+                                <li><a class="dropdown-item" href="/add/good">Add product</a></li>
+                                <li><a class="dropdown-item" href="/add/molecule">Add molecule</a></li>
+                                <li><a class="dropdown-item" href="/add/pattern">Add pattern</a></li>
+                            </ul>
+                        </h5>
+                    </li>
+                </ul>
+                <li><h5><a href="/search/goods" class="nav-link px-6 text-white">Search</a></h5></li>
+                <li><h5><a href="/show/pattern" class="nav-link px-6 text-white">Patterns</a></h5></li>
+                <li><h5><a href="/about" class="nav-link px-6 text-white">About</a></h5></li>
+            </ul>
+
+            <div class="my">
+                <h5 th:text="Hello + ', ' + ${user} + '!'"></h5>
+            </div>
+
+            <form th:action="@{/mylogout}" method="post">
+                <button type="submit" class="btn btn-warning">Logout</button>
+            </form>
+
+        </div>
+
+
+        <div th:unless="${auth}"
+             class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <div class="logo">
+                <img src="../static/images/storage.png" alt="" width="350" height="100">
+            </div>
+
+            <div class="col-4">
+                <h5 class="myHello">Hello! We are glad to see you on our website, please log in or register!</h5>
+            </div>
+
+            <form class="row g-3" th:action="@{/mylogin}" method="post">
+
+                <div class="col-auto">
+                    <input type="input" class="form-control" name="user" id="login" placeholder="login">
+                </div>
+
+                <div class="col-auto">
+                    <input type="password" class="form-control" name="pass" id="inputPassword2" placeholder="Password">
+                </div>
+
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-outline-light me-2">Login</button>
+                </div>
+
+            </form>
+
+            <form th:action="@{/add/user}" method="get">
+                <button type="submit" class="btn btn-warning">Sign-up</button>
+            </form>
+
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="col-7"></div>
+
+        <div class="col-5">
+            <div class="error" th:if="${param.error}" id="error">
+                Invalid username or password.
+            </div>
+            <div class="success" th:text="${message}" id="success"></div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+        <div class="col-12">
+            <h2 class="display-6 text-center mb-4">Our capabilities and services:</h2>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="card" style="width: 20rem;">
+                <img src="../static/images/ABX_1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Reagents</h5>
+                    <p class="card-text">In organic chemistry, the term "reagent" denotes a chemical ingredient (a
+                        compound or mixture, typically of inorganic or small organic molecules) introduced to cause the
+                        desired transformation of an organic substance</p>
+                    <a href="#" class="btn btn-dark">To learn more</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" style="width: 20rem;">
+                <img src="../static/images/ABX_2.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Chemicals</h5>
+                    <p class="card-text">All chemicals must be stored in a safe, secure location (place). Hazardous
+                        chemicals must be stored below eye level. Do not store chemicals on the floor, window ledges, or
+                        balconies and etc.
+                    </p>
+                    <a href="#" class="btn btn-dark">To learn more</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" style="width: 20rem;">
+                <img src="../static/images/ABX_3.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Consumables</h5>
+                    <p class="card-text">
+                        Consumables are goods used by individuals and businesses that must be replaced regularly because
+                        they wear out or are used up. They can also be defined as the components of an end product that
+                        is used up or ...</p>
+                    <a href="#" class="btn btn-dark">To learn more</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" style="width: 20rem;">
+                <img src="../static/images/ABX_5.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Quality assurance</h5>
+                    <p class="card-text">The maintenance of a desired level of quality in a service or product,
+                        especially by means of attention to every stage of the process of delivery or production. We
+                        guarantee the quality of our work and take care of our clients!</p>
+                    <a href="#" class="btn btn-dark">To learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-2">
+            <h1 class="display-4 center">Pricing</h1>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-2">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3 p-3 text-bg-dark">
+                    <h4 class="my-0 fw-normal">Free</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title ">$0<small
+                            class="text-body-secondary fw-light">/month</small></h1>
+                    <ul class="list-styled mt-3 mb-4">
+                        <li>10 users included</li>
+                        <li>2 GB of storage</li>
+                        <li>Email support</li>
+                        <li>Help center access</li>
+                    </ul>
+                    <a href="/add/user" class="w-100 btn btn-lg btn-dark">Sign up for free</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3 p-3 text-bg-dark">
+                    <h4 class="my-0 fw-normal">Pro</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">$15<small
+                            class="text-body-secondary fw-light">/month</small>
+                    </h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>20 users included</li>
+                        <li>10 GB of storage</li>
+                        <li>Priority email support</li>
+                        <li>Help center access</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-dark" disabled>Get started</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3 p-3 text-bg-dark">
+                    <h4 class="my-0 fw-normal">Enterprise</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">$29<small
+                            class="text-body-secondary fw-light">/month</small>
+                    </h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>30 users included</li>
+                        <li>15 GB of storage</li>
+                        <li>Phone and email support</li>
+                        <li>Help center access</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-dark" disabled>Get started</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+            <div class="col-12 col-md">
+
+            </div>
+            <div class="col-6 col-md">
+                <h5>Features</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1" disa><a class="link-secondary text-decoration-none" href="#" disa>Cool stuff</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a>
+                    </li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" >Team</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" >Locations</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" >Privacy</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" >Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+
+.col-md-12 {
+    font-size: 25px;
+    margin: 5px;
+    padding: 5px;
+}
+.row-my {
+    background-color: white;
+}
+.my {
+
+    border-width: 2px;
+    border-color: snow;
+
+}
+.btn {
+    margin-top: 10px;
+    margin-left: 500px;
+}
+.error {
+    color: red;
+}

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/css/update.css">
+</head>
+
+<body>
+<header class="p-3 text-bg-dark">
+
+  <!--Reg-->
+  <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <div class="logo">
+
+
+        <img src="../static/images/storage.png" alt="" width="350" height="100">
+
+
+    </div>
+
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+
+        <li><h5><a href="/start" class="nav-link px-6 text-white">Home</a></h5></li>
+        <li><h5><a href="/storage" class="nav-link px-6 text-white">Storage</a></h5></li>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <h5>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                Add ... </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="/add/company">Add company</a></li>
+                <li><a class="dropdown-item" href="/add/good">Add product</a></li>
+                <li><a class="dropdown-item" href="/add/molecule">Add molecule</a></li>
+                <li><a class="dropdown-item" href="/add/pattern">Add pattern</a></li>
+              </ul>
+            </h5>
+          </li>
+        </ul>
+        <li><h5><a href="/search/goods" class="nav-link px-6 text-white">Search</a></h5></li>
+        <li><h5><a href="/show/pattern" class="nav-link px-6 text-white">Patterns</a></h5></li>
+        <li><h5><a href="/about" class="nav-link px-6 text-white">About</a></h5></li>
+      </ul>
+
+    <div></div>
+
+
+    <form th:action="@{/mylogout}" method="post">
+      <button type="submit" class="btn btn-warning">Logout</button>
+    </form>
+
+  </div>
+
+</header>
+
+<div class="container-fluid p-3 text-bg-dark">
+  <hr>
+  <div class="row">
+
+    <div class="col-8">
+      <p class="header" >Delete or change the product...</p>
+    </div>
+  </div>
+  <hr>
+  <form class="row g-3 needs-validation" novalidate th:action="@{/action(id = ${good.id})}" method="post" th:object="${good}"
+        enctype="multipart/form-data">
+
+    <div class="col-md-4">
+      <label for="validationCustom13" class="form-label">Company</label>
+      <select th:field="*{company}" class="form-select" id="validationCustom13" required>
+        <!--<option selected disabled value="">Choose...</option>-->
+        <option th:each="comp : ${allCompanies}"
+                th:value="${comp.uuid}" th:text="${comp.companyName}"></option>
+      </select>
+      <div class="invalid-feedback">
+        Choose the company or add new!
+      </div>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+
+    <div class="col-md-1">
+      <a th:href="@{/add/company}" class="btn btn-dark btn">Add company</a>
+    </div>
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-5">
+      <label for="validationCustom10" class="form-label">Date of receiving</label>
+      <input type="date" th:field="*{dateOfReceiving}" class="form-control" id="validationCustom10" required>
+      <div class="invalid-feedback">
+        Should be not blank.
+      </div>
+      <div class="valid-feedback">
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <label for="validationCustom01" class="form-label">Name</label>
+      <input type="text" th:field="*{name}" class="form-control" id="validationCustom01" value="Mark" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Should not be blank!
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <label for="validationCustom02" class="form-label">Serial number</label>
+      <input type="text" th:field="*{serialNumber}" class="form-control" id="validationCustom02" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Should not be blank!
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <label for="validationCustom03" class="form-label">Internal code</label>
+      <input type="text" th:field="*{internalCode}" class="form-control" id="validationCustom03" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Should not be blank!
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <label for="validationCustom04" class="form-label">Quantity</label>
+      <input type="number" min="1" th:field="*{quantity}" class="form-control" id="validationCustom04" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Should not be blank!
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label for="validationCustom05" class="form-label">Expiry date</label>
+      <input type="date" th:field="${good.dateOfExpire}" class="form-control" id="validationCustom05" required>
+      <div class="valid-feedback">
+      </div>
+      <div class="invalid-feedback">
+        Should not be blank!
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <label for="validationCustom06" class="form-label">Description</label>
+      <input type="text" th:field="*{description}" class="form-control" id="validationCustom06">
+
+    </div>
+
+    <div class="col-md-2">
+      <label for="validationCustom07" class="form-label">Price</label>
+      <input type="text" th:field="*{price.price}" class="form-control" id="validationCustom07" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+
+    <div class="col-md-1">
+      <label for="validationCustom11" class="form-label">Currency</label>
+      <select th:field="*{price.currency}" class="form-select" id="validationCustom11" required>
+        <option selected disabled value="">Choose...</option>
+        <option th:each="colorOpt : ${T(com.example.course_storage.model.Currency).values()}"
+                th:value="${colorOpt}" th:text="${colorOpt}"></option>
+
+      </select>
+      <div class="invalid-feedback">
+        Should be not blank.
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label for="validationCustom16" class="form-label">Date of receiving</label>
+      <input type="date" th:field="*{dateOfReceiving}" class="form-control" id="validationCustom16" required>
+      <div class="invalid-feedback">
+        Should be not blank.
+      </div>
+    </div>
+
+
+
+
+
+    <div class="col-md-3">
+      <label for="validationCustom12" class="form-label">Availability of certificate</label>
+      <select th:field="*{certificatePresent}" class="form-select" id="validationCustom12" required>
+        <!-- <option selected disabled th:value="null" value="null">Choose...</option>-->
+
+        <option th:value="false">false</option>
+        <option th:value="true">true</option>
+      </select>
+      <div class="invalid-feedback">
+        Should not be blank!
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <label for="validationCustom15" class="form-label">Add certificate</label>
+      <input type="file" name="file" class="form-control" id="validationCustom15">
+
+    </div>
+
+    <div class="col-10">
+      <input type="submit" name="action" value="update" class="btn btn-warning btn-lg">
+    </div>
+    <div class="col-2">
+      <input type="submit" name="action" value="delete" class="btn btn-warning btn-lg">
+    </div>
+  </form>
+
+</div>
+<div class="container-fluid p-3 text-bg-dark">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div class="success" th:text="${success}"></div>
+      <div class="error" th:text="${message}"></div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-12 col">
+    <img src="../static/images/toyota1.jpg" width="100%" height="500px" alt="...">
+  </div>
+
+</div>
+<hr>
+<footer class=" text-bg-dark">
+  <div class="row">
+    <div class="col-12 col-md">
+
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a>
+        </li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>

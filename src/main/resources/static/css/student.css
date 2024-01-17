@@ -1,0 +1,14 @@
+
+
+.page-item.active {
+    --bs-pagination-active-bg: #a10404;
+   /* --bs-pagination-active-color: white;*/
+    --bs-pagination-active-border-color: white;
+}
+.page-item {
+--bs-pagination-bg: black;
+    --bs-pagination-color: white
+}
+
+
+

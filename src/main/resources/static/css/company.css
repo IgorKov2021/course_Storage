@@ -1,0 +1,21 @@
+body {
+    background-color: #373b3e;
+}
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+.success {
+    color: #08c208;
+}
+
+.error {
+    color: red;
+}
+p.header {
+    color: wheat;
+    font-family: Tahoma;
+    font-size: large;
+}

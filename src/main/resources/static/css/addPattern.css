@@ -1,0 +1,65 @@
+
+
+
+
+.button:hover {
+
+
+    background-color: gray;
+
+
+}
+.my {
+    background-color: white;
+}
+
+
+
+
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}
+
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+p.header {
+    color: wheat;
+    font-family: Tahoma;
+    font-size: large;
+}
+.btn-dark {
+    color: black;
+    margin-top: 32px;
+    background-color: white;
+    width: 250px;
+}
+
+
+
+.form-check-input:checked {
+    background-color: #ffc107; !important;
+    border: 20px;
+    color: black;
+
+}
+
+td {
+    text-align: center;
+
+}
+
+.my {
+    border-radius: 8px 8px 8px 8px;
+}
+ form.my {
+    width: fit-content;
+    background-color: #212529;
+     padding: 5px;
+}

@@ -1,0 +1,1 @@
+alter table persons add email varchar(255)

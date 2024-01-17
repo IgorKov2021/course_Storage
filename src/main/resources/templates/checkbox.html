@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/check}" th:object="${check}" method="post">
+    <tr th:each="molec, iterStat : ${mol}" th:id="'group-' + ${molec.getId()}" >
+  <td th:text="${iterStat.count}"><a href="/groups/${group.id}">№</a></td>
+<!--  <td th:text="${group.id}">Screen name</td>
+  <td th:text="${group.screen_name}">Screen name</td>-->
+  <td th:text="${molec.name}">Group name</td>
+  <td th:text="${molec.trivialName}">members_count</td>
+  <td><input type="checkbox" th:checked="${check.search(test, molec.getId())}" th:field="*{checkedItems}" th:value="${molec.id}" /></td>
+</tr>
+  <input type="submit" text="Add checked" />
+</form>
+</body>
+</html>

@@ -1,0 +1,59 @@
+.error {
+    color: red;
+
+    margin-top: -40px;
+}
+/*.nav-link {
+    display: block;
+
+   color: red;
+    background: none;
+    border: 0;
+
+ }*/
+.h1 {
+    font-size: xx-small;
+}
+.nav-link dropdown-toggle {
+    font-size: 200px;
+}
+
+body {background-color: gray}
+
+.my {
+    margin-right: 150px;
+    font-style: italic;
+
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.container {
+    margin-top: 100px;
+    padding-top: 100px;
+}
+
+.success {
+    color: green;
+    margin-top: -40px;
+    margin-right: 140px;
+
+}
+.myHello {
+    font-family: "Arial Narrow";
+    font-size: 25px;
+    font-kerning: auto;
+    text-shadow: white 1px 0 10px;
+}
+div.img {
+    align-items: center;
+}
+img.img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+
+}

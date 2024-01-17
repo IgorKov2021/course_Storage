@@ -1,0 +1,1 @@
+alter table persons add login varchar(255)

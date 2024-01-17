@@ -1,0 +1,105 @@
+.dtHorizontalExampleWrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+#dtHorizontalExample th, td {
+    white-space: nowrap;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+    bottom: .5em;
+}
+ h1 {
+    color: red;
+
+}
+
+.arrow {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 3px solid gray;
+    border-radius: 50%;
+}
+.arrow:after {
+    position: absolute;
+    top: 8px;;
+    left: 9px;
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-left: 3px solid gray;
+    border-bottom: 3px solid gray;
+    transform: rotate(45deg);
+}
+
+
+.to-top{
+
+    color:white;
+    text-decoration:none;
+   /* padding-top:1.8em;
+    display:inline-block;!* or block *!
+    position:relative;
+    border-color:white;
+
+    transition:all .3s ease-out;*/
+}
+.to-top:before{
+    content:'▲';
+    /*font-size:.9em;
+    position:absolute;
+    top:0;
+    left:50%;
+    margin-left:-.7em;
+   !* border:solid .13em white;*!
+    border-radius:10em;
+    width:1.4em;
+    height:1.4em;
+    line-height:1.3em;
+    border-color:inherit;*/
+/*    transition:transform .5s ease-in;*/
+}
+
+.to-top:hover{
+    color:pink;
+    border-color:pink;
+}
+
+body{
+    background:#222;
+    text-align:center;
+    font-size:180%;
+    margin:2em;
+    font-family: Calibri, arial, sans-serif;
+}
+
+.to-top1 {
+    color:red;
+}
+
+.to-top1:before{
+    content:'△';
+    /*font-size:.9em;
+    position:absolute;
+    top:0;
+    left:50%;
+    margin-left:-.7em;
+   !* border:solid .13em white;*!
+    border-radius:10em;
+    width:1.4em;
+    height:1.4em;
+    line-height:1.3em;
+    border-color:inherit;*/
+    /*    transition:transform .5s ease-in;*/
+}

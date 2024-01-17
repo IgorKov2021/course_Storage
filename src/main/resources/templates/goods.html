@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+<h1>sdsdsdsdsd</h1>
+<form name="myFrom" action="/good" method="post" th:object="${good}" id="myForm">
+
+  <input type="text" th:field="*{name}" id="my">
+    <p th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}" ></p>
+    <input type="text" th:field="*{serialNumber}" id="serial">
+   <!--Company <input type="text" th:field="*{company}" id="my">-->
+
+<input type="submit" value="ADD">
+  <!-- <button class="button" id="order-action" type="submit">Оформить заказ</button>&ndash;&gt;
+    <input type="submit" value="ALL" id="all" >-->
+
+
+</form>
+<!--
+<form action="/good" method="post" th:object= "${good}">
+    <input type="text" name="name" th:field="*{name}">
+    <input type="text" name="serialNumber" th:field="*{serialNumber}">
+    <input type="submit" name="action" value="ADD">
+</form>
+-->
+
+<ul>
+    <li th:each="item : ${goods}"> <p th:text="${item.name}"></p><a th:href="@{/detail(id = ${item.id})}">view</a></li>
+</ul>
+
+<hr>
+<ul>
+    <li th:each="item : ${goods}">
+        <p th:text="${item.name}"></p>
+        <form action="#" th:action="@{/detail(id = ${item.id})}" method="post">
+            <button> CLICK</button>
+        </form>
+        <form action="#" th:action="@{/delete(id = ${item.id})}" method="post">
+            <button> CLICK</button>
+        </form>
+    </li>
+</ul>
+
+
+<script>
+
+    let name = document.getElementById("my");
+    name.value = "";
+
+</script>
+<button onclick="myFunction()">Try it</button>
+
+<script src="../static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+.btn-lg {
+    width: 200px;
+}
+
+
+
+.button:hover {
+
+
+    background-color: gray;
+
+
+}
+.my {
+    background-color: white;
+}
+
+.form-label1 {
+    display: block;
+    width: 100px;
+    background: #3df;
+    padding: 10px;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Tahoma;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}
+.hr {
+    margin: 0px;
+    padding: 0px;
+    width: 2px;
+    color: white;
+}
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+p.header {
+    color: wheat;
+    font-family: Tahoma;
+    font-size: large;
+}
+.btn-dark {
+    color: black;
+    margin-top: 30px;
+    background-color: white;
+    width: 200px;
+}
+td {
+    text-align: center;
+}
+
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+body {
+    background-color: #373b3e;
+}

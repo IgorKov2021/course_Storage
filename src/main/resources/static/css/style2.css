@@ -1,0 +1,6 @@
+
+.btn-success {
+    --bs-btn-color: red;
+    --bs-btn-bg: grey;
+    --bs-btn-hover-bg: black;
+}

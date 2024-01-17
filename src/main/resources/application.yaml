@@ -1,0 +1,18 @@
+spring:
+
+  datasource:
+    password: 123456
+    url: jdbc:postgresql://localhost:5432/Storage
+    username: IgorSQL
+
+  main:
+    allow-bean-definition-overriding: true
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+   # user:
+    #  name: Igor
+     # password: 1111
+    show-sql: true
+

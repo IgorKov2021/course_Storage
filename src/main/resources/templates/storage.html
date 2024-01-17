@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:method="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/storage.css">
+</head>
+
+<body>
+<header class="p-3 text-bg-dark">
+
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <div class="logo">
+            <img src="../static/images/storage.png" alt="" width="350" height="100">
+        </div>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+
+            <li><h5><a href="/start" class="nav-link px-6 text-white">Home</a></h5></li>
+            <li><h5><a href="#" class="nav-link px-6 text-secondary">Storage</a></h5></li>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <h5>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Add ... </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/add/company">Add company</a></li>
+                            <li><a class="dropdown-item" href="/add/good">Add product</a></li>
+                            <li><a class="dropdown-item" href="/add/molecule">Add molecule</a></li>
+                            <li><a class="dropdown-item" href="/add/pattern">Add pattern</a></li>
+                        </ul>
+                    </h5>
+                </li>
+            </ul>
+            <li><h5><a href="/search/goods" class="nav-link px-6 text-white">Search</a></h5></li>
+            <li><h5><a href="/about" class="nav-link px-6 text-white">About</a></h5></li>
+        </ul>
+
+
+        <form th:action="@{/mylogout}" method="post">
+            <button type="submit" class="btn btn-warning">Logout</button>
+        </form>
+
+    </div>
+
+
+</header>
+
+<!--<table class="table table-dark table-striped">-->
+<!--<table class="table table-bordered table-dark table-striped-columns table-hover">-->
+<div class=" container-fluid bg-dark">
+    <hr>
+    <table class="table table-bordered table-dark  table-hover">
+        <tr>
+
+
+            <th scope="col">№</th>
+            <th scope="col"> Name
+                <a class="to-top" th:href="@{/sort(name=${'name'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'name'}, param=${'desc'})}"></a>
+            </th>
+            <th scope="col"> SerialNumber
+                <a class="to-top" th:href="@{/sort(name=${'serialNumber'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'serialNumber'}, param=${'desc'})}"></a>
+            </th>
+            <th scope="col">InternalCode
+                <a class="to-top" th:href="@{/sort(name=${'internalCode'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'internalCode'}, param=${'desc'})}"></a>
+            </th>
+
+            <th scope="col"> Quantity
+
+                <a class="to-top" th:href="@{/sort(name=${'quantity'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'quantity'}, param=${'desc'})}"></a>
+            </th>
+
+            <th scope="col"> ExpiryDate
+                <a class="to-top" th:href="@{/sort(name=${'dateOfExpire'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'dateOfExpire'}, param=${'desc'})}"></a>
+            </th>
+            <th scope="col"> Company
+                <a class="to-top" th:href="@{/sort(name=${'company'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'company'}, param=${'desc'})}"></a>
+            </th>
+            <th scope="col"> Country
+                <a class="to-top" th:href="@{/sort(name=${'company_country'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'company_country'}, param=${'desc'})}"></a>
+            </th>
+            <th scope="col">DateOfReceiving
+                <a class="to-top" th:href="@{/sort(name=${'dateOfReceiving'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'dateOfReceiving'}, param=${'desc'})}"></a>
+            </th>
+            <th scope="col"> Price
+                <a class="to-top" th:href="@{/sort(name=${'price-price'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'price-price'}, param=${'desc'})}"></a>
+            </th>
+            <th scope="col"> Currency
+
+                <a class="to-top" th:href="@{/sort(name=${'price_currency'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'price_currency'}, param=${'desc'})}"></a>
+
+            </th>
+            <th scope="col"> Certificate
+
+                <a class="to-top" th:href="@{/sort(name=${'isCertificatePresent'}, param=${'asc'})}"></a>
+                <a class="to-top2" th:href="@{/sort(name=${'isCertificatePresent'}, param=${'desc'})}"></a>
+            </th>
+            <th scope="col"> Description</th>
+            <th scope="col"> Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${goods.isEmpty()}">
+            <td colspan="14"> No Goods Available</td>
+        </tr>
+        <tr th:each="one, itemstat : ${goods}">
+            <th scope="row">
+                <span th:text="${itemstat.index + 1}"/></th>
+            <td><span th:text="${one.name}"></span></td>
+            <td><span th:text="${one.serialNumber}"></span></td>
+            <td><span th:text="${one.internalCode}"></span></td>
+            <td><span th:text="${one.quantity}"></span></td>
+            <td><span th:text="${one.dateOfExpire}"></span></td>
+            <td><span th:text="${one.company.companyName}"></span></td>
+            <td><span th:text="${one.company.country}"></span></td>
+            <td><span th:text="${one.dateOfReceiving}"></span></td>
+            <!-- <td><span th:text="${one.createDate}"></span></td>-->
+            <td><span th:text="${one.price.price}"></span></td>
+            <td><span th:text="${one.price.currency}"></span></td>
+            <td><span th:text="${one.certificatePresent}"></span></td>
+            <td><span th:text="${one.description}"></span></td>
+
+            <td>
+                <form action="#" th:action="@{/update(id = ${one.id})}" method="post">
+                    <button class="btn btn-warning" type="submit"> Change</button>
+                </form>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <p th:text="${nameSort}"></p>
+    <hr>
+    <div th:if="${nameSort ne null}">
+        <nav aria-label="...">
+            <ul th:if="${goods.totalPages > 0}" class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link"
+                       th:href="@{/sort(size=${goods.size}, page=${1}, name = ${nameSort}, param = ${param})}">First</a>
+                </li>
+
+
+                <li th:each="pageNumber : ${pageNumbers}"
+                    class="page-item" th:classappend="${pageNumber==goods.number + 1} ? active">
+
+                    <a class="page-link"
+                       th:href="@{/sort(size=${goods.size}, page=${pageNumber}, name = ${nameSort}, param = ${direction})} "
+                       th:text="${pageNumber}"></a></li>
+
+                <li class="page-item">
+                    <a class="page-link"
+                       th:href="@{/sort(size=${goods.size}, page=${goods.totalPages}, name = ${nameSort}, param = ${param})}">Last</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div th:unless="${nameSort}">
+        <nav aria-label="...">
+            <ul th:if="${goods.totalPages > 0}" class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" th:href="@{/storage(size=${goods.size}, page=${1})}">First</a>
+                </li>
+
+
+                <li th:each="pageNumber : ${pageNumbers}"
+                    class="page-item" th:classappend="${pageNumber==goods.number + 1} ? active">
+
+                    <a class="page-link" th:href="@{/storage(size=${goods.size}, page=${pageNumber})}"
+                       th:text="${pageNumber}"></a></li>
+
+
+                <li class="page-item">
+                    <a class="page-link" th:href="@{/storage(size=${goods.size}, page=${goods.totalPages})}">Last</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="row"></div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>
