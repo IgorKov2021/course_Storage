@@ -1,20 +1,18 @@
 package com.example.course_storage.service;
 
 import com.example.course_storage.domain.GoodDto;
-import com.example.course_storage.domain.Student;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 @Service
 
-public class StudentService {
+public class PageService {
 
 
 

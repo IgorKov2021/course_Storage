@@ -1,11 +1,9 @@
 package com.example.course_storage.web;
 
 import com.example.course_storage.domain.GoodDto;
-import com.example.course_storage.domain.Student;
 import com.example.course_storage.service.GoodService;
-import com.example.course_storage.service.StudentService;
+import com.example.course_storage.service.PageService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -40,7 +38,7 @@ public class StorageGetAllController {
     }*/
 
 
-    private final StudentService studentService;
+    private final PageService pageService;
 
     @GetMapping
     public ModelAndView showAll(@ModelAttribute(name = "good") GoodDto goodDto,
@@ -56,7 +54,7 @@ public class StorageGetAllController {
        // modelAndView.addObject("goods", all);
 
 
-        Page<GoodDto> goodPage = studentService.findPaginated(PageRequest.of(currentPage - 1, pageSize), all);
+        Page<GoodDto> goodPage = pageService.findPaginated(PageRequest.of(currentPage - 1, pageSize), all);
 
         modelAndView.addObject("goods", goodPage);
 

@@ -3,7 +3,6 @@ package com.example.course_storage.serviceImpl;
 import com.example.course_storage.domain.GoodDto;
 import com.example.course_storage.domain.SearchGoodDto;
 import com.example.course_storage.mapper.GoodMapper;
-import com.example.course_storage.model.FirmEntity;
 import com.example.course_storage.model.GoodEntity;
 import com.example.course_storage.repository.FirmRepository;
 import com.example.course_storage.repository.GoodRepository;
@@ -76,8 +75,8 @@ public class GoodServiceImpl implements GoodService {
 
     @Override
     public List<GoodDto> search(SearchGoodDto searchGoodDto) {
-        if (StringUtils.isNotBlank(searchGoodDto.getName()) && StringUtils.isNotBlank(searchGoodDto.getSerialNumber())) {
-            List<GoodEntity> goodEntities = goodRepository.searchByNameAndSerialNumber(searchGoodDto.getName(), searchGoodDto.getSerialNumber());
+        if (StringUtils.isNotBlank(searchGoodDto.getName()) || StringUtils.isNotBlank(searchGoodDto.getSerialNumber())) {
+            List<GoodEntity> goodEntities = goodRepository.findByNameAndSerialNumber(searchGoodDto.getName(), searchGoodDto.getSerialNumber());
             List<GoodDto> listGoodDto = goodMapper.toListGoodDto(goodEntities);
             return listGoodDto;
         } else {

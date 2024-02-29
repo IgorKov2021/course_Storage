@@ -99,14 +99,7 @@ public class GoodController {
         return "redirect:/storage";
     }*/
 
-    @GetMapping("/good/search")
-    public ModelAndView search(@ModelAttribute(name = "searchGood") SearchGoodDto goodDto) {
 
-        ModelAndView modelAndView = new ModelAndView("search");
-        List<GoodDto> search = goodService.search(goodDto);
-        modelAndView.addObject("goods", search);
-        return modelAndView;
-    }
 
     @GetMapping("/good/searchS")
     public ModelAndView searchSpecification(SearchGoodDto goodDto) {

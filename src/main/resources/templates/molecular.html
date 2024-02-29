@@ -70,7 +70,7 @@
         <div class="col-md-3">
             <label for="validationCustom10" class="form-label">Molecule name</label>
             <input type="text" th:field="*{name}" class="form-control" id="validationCustom10" required>
-            <p th:if="${#fields.hasErrors('companyName')}" th:errorclass="error" th:errors="*{name}"></p>
+
             <div class="invalid-feedback">
                 Should be not blank.
             </div>

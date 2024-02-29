@@ -13,7 +13,8 @@ import java.util.UUID;
 
 public interface GoodRepository extends JpaRepository<GoodEntity, UUID>, JpaSpecificationExecutor<GoodEntity> {
 
-    List<GoodEntity> searchByNameAndSerialNumber(String name, String serial);
+    List<GoodEntity> findByNameAndSerialNumber(String name, String serial);
+
 
     /*@Modifying
     @Query(value = "delete GoodEntity g where g.id = :id")

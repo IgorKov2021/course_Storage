@@ -1,0 +1,2 @@
+insert into firms (uuid, company_name, country) VALUES ('1289841c-482a-424d-a7a6-369d7311d11f', 'ABX', 'Russia'),
+                                                        ('4489841c-482a-424d-a7a6-369d7311d11f','Lou', 'Belarus');

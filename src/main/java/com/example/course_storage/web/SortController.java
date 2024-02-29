@@ -1,9 +1,8 @@
 package com.example.course_storage.web;
 
 import com.example.course_storage.domain.GoodDto;
-import com.example.course_storage.domain.Student;
 import com.example.course_storage.service.GoodService;
-import com.example.course_storage.service.StudentService;
+import com.example.course_storage.service.PageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,7 +21,7 @@ import java.util.stream.IntStream;
 public class SortController {
 
     private final GoodService goodService;
-    private final StudentService studentService;
+    private final PageService pageService;
    /* @GetMapping("/{name}/{param}/storage")
     public ModelAndView addGood(
     @PathVariable String name,
@@ -52,7 +51,7 @@ public class SortController {
              List<GoodDto> sorted = goodService.findAllBySort(name, param);
 
 
-            Page<GoodDto> goodPage = studentService.findPaginated(PageRequest.of(currentPage - 1, pageSize), sorted);
+            Page<GoodDto> goodPage = pageService.findPaginated(PageRequest.of(currentPage - 1, pageSize), sorted);
 
             modelAndView.addObject("goods", goodPage);
 

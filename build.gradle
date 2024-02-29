@@ -52,6 +52,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
     implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
 
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    testImplementation group: 'com.h2database', name: 'h2', version: '2.2.224'
+
+
 }
 
 tasks.named('bootBuildImage') {

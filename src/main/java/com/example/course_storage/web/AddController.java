@@ -36,7 +36,7 @@ public class AddController {
         List<FirmDto> all = firmService.getAll();
         modelAndView.addObject("success", null);
 
-        //modelAndView.addObject("companies", all);
+
 
         return modelAndView;
     }
